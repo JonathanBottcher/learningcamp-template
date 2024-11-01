@@ -4,6 +4,10 @@ class PreferencesController < ApplicationController
     @pagy, @records = pagy(@preferences)
   end
 
+  def new
+    @preference = Preference.new
+  end
+
   def create
     preference_params = params.require(:preference).permit(:name, :description, :restriction)
     @preference = current_user.preferences.build(preference_params)
