@@ -3,7 +3,7 @@ class PreferencesController < ApplicationController
     @preferences = current_user.preferences
     @pagy, @records = pagy(@preferences)
   end
-
+  
   def new
     @preference = Preference.new
   end
