@@ -6,39 +6,37 @@ class PreferencesController < ApplicationController
     @pagy, @records = pagy(@preferences)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @preference = Preference.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @preference = current_user.preferences.build(preference_params)
 
     if @preference.save
-      redirect_to preferences_path, notice: 'Preference was created successfully'
+      redirect_to preferences_path, notice: t('views.preferences.create_success')
     else
-      render :new, alert: 'Could not create preference'
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @preference.update(preference_params)
-      redirect_to @preference, notice: 'Preference was updated successfully'
+      redirect_to @preference, notice: t('views.preferences.update_success')
     else
-      render :edit, alert: 'Could not update preference'
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     if @preference.destroy
-      redirect_to preferences_path, notice: 'Preference was succesfully deleted'
+      redirect_to preferences_path, notice: t('views.preferences.destroy_success')
     else
-      redirect_to preferences_path, alert: 'Could not delete preference'
+      redirect_to preferences_path, alert: t('views.preferences.destroy_failure')
     end
   end
 
