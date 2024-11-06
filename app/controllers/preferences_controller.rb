@@ -12,8 +12,7 @@ class PreferencesController < ApplicationController
     @preference = Preference.new
   end
 
-  def edit
-  end
+  def edit;end
 
   def create
     @preference = current_user.preferences.build(preference_params)
