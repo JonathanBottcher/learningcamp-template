@@ -28,7 +28,7 @@ class PreferencesController < ApplicationController
     if @preference.update(preference_params)
       redirect_to @preference, notice: 'Preference was updated successfully'
     else
-      render :edit, alert: 'Could not update preference'
+      render :edit, status: :unprocessable_entity
     end
   end
 
