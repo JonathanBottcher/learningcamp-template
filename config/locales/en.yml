@@ -102,6 +102,8 @@ en:
       - Description
       - Restriction
       create_preference: Create Preference
+      create_success: Preference created successfully.
+      create_failure: Failed to create preference.
       description: Description
       edit:
         description: ''
@@ -118,6 +120,10 @@ en:
       show_preference: Show Preference
       title: Preferences
       update_preference: Update Preference
+      update_success: Preference updated successfully.
+      update_failure: Failed to update preference.
+      destroy_success: Preference removed successfully.
+      destroy_failure: Failed to remove preference.
     recipes:
       cancel: Cancel
       close_panel: Close
