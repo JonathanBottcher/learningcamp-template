@@ -15,8 +15,6 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
   end
 
-  def destroy; end
-
   def recipe_params
     params.require(:recipe).permit(:name, :description, :ingredients)
   end
