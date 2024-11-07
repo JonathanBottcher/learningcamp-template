@@ -13,6 +13,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
+
+    if @recipe.save
+      redirect_to recipes_path, notice: t('views.recipes.create_success')
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def recipe_params
