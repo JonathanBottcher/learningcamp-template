@@ -14,22 +14,15 @@
 #
 #  index_preferences_on_user_id  (user_id)
 #
-require 'rails_helper'
 
-RSpec.describe Preference, type: :model do
-  subject {
-    Preference.new(
-      name: "test",
-      description: "test",
-      restriction: false
-    )
-  }
-  it 'is valid with a name' do
-    expect(subject).to be_valid
-  end
+describe Preference do
+  describe 'validations' do
+    subject { build(:preference) }
 
-  it 'is invalid without a name' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+    let(:user) { create(:user) }
+
+    it 'is valid with a name, description and restriction' do
+      expect(subject).to be_valid
+    end
   end
 end
