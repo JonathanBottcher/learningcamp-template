@@ -16,8 +16,9 @@
 #
 FactoryBot.define do
   factory :preference do
-    name { "MyString" }
-    description { "MyText" }
+    name { 'MyString' }
+    description { 'MyText' }
     restriction { false }
+    user
   end
 end
