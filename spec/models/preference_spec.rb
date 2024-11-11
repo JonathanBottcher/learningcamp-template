@@ -24,15 +24,15 @@ describe Preference do
     it 'is valid with a name, description and restriction' do
       expect(subject).to be_valid
     end
-    
-    # Validate presence
+
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:restriction) }
 
     # Test for max preferences
     it 'is invalid if number of preferences is exceeded' do
-      create_list(:preference, 5, user: user)
+      create_list(:preference, 5, user:)
+
       extra_preference = user.preferences.build(name: 'Preference 6', description: 'Description 6', restriction: true)
       expect(extra_preference).not_to be_valid
     end

@@ -3,8 +3,8 @@ class CreatePreferences < ActiveRecord::Migration[7.1]
     create_table :preferences do |t|
       t.references :user, foreign_key: true, null: false
       t.string :name, null: false
-      t.text :description
-      t.boolean :restriction, null: false, default: true
+      t.text :description, null: false
+      t.boolean :restriction, null: false, default: false
 
       t.timestamps
     end

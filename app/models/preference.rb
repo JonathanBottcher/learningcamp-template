@@ -17,5 +17,8 @@
 class Preference < ApplicationRecord
   MAX_PREFERENCES = 5
   belongs_to :user
+
   validates :name, presence: true
+  validates :description, presence: true
+  validates :restriction, inclusion: { in: [true, false] }
 end

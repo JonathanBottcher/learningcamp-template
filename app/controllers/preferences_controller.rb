@@ -12,7 +12,7 @@ class PreferencesController < ApplicationController
     @preference = Preference.new
   end
 
-  def edit;end
+  def edit; end
 
   def create
     @preference = current_user.preferences.build(preference_params)
@@ -39,6 +39,8 @@ class PreferencesController < ApplicationController
       redirect_to preferences_path, alert: t('views.preferences.destroy_failure')
     end
   end
+
+  private
 
   def preference_params
     params.require(:preference).permit(:name, :description, :restriction)

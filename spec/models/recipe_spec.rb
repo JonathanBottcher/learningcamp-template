@@ -24,5 +24,9 @@ describe Recipe do
     it 'is valid with a name, description and ingredients' do
       expect(subject).to be_valid
     end
+
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:ingredients) }
   end
 end

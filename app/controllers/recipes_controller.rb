@@ -13,16 +13,14 @@ class RecipesController < ApplicationController
   end
 
   def create
-    preferences = current_user.preferences
-
-    @recipe = RecipeGeneratorService.new(recipe_params[:ingredients], current_user.id, preferences).call
+    @recipe = RecipeGeneratorService.new(recipe_params[:ingredients], current_user.id,
+                                         current_user.preferences).call
 
     if @recipe.save
       redirect_to recipes_path, notice: t('views.recipes.create_success')
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def destroy
@@ -37,7 +35,6 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
-
   end
 
   def recipe_params
