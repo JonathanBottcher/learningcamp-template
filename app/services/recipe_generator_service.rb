@@ -9,7 +9,7 @@ class RecipeGeneratorService
   def initialize(message, user_id, preferences = [])
     @message = message
     @user = User.find(user_id)
-    @preferences = preferences
+    @preferences = user.preferences
   end
 
   def call
