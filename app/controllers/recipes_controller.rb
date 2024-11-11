@@ -6,9 +6,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show
-    @recipe
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new
