@@ -49,7 +49,7 @@ class RecipeGeneratorService
     <<~CONTENT
       You are an expert cooking assistant that generates recipes. Your task is to create a detailed recipe ONLY using the ingredients provided.
        The user has the following preferences:#{preference_info}
-      Your response must be in JSON format, like this:
+      Your response MUST ALWAYS be in JSON format, like this:
           {
           "name": "Recipe Name",
           "description": "Preparation instructions"
