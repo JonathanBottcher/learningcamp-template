@@ -42,7 +42,7 @@ class RecipeGeneratorService
   end
   
   def preference_info
-    @preferences.map { |pref| "Consider this preference: #{pref.description}. Restriction: #{pref.restriction}" }
+    @preferences.map { |pref| "Consider this preference: #{pref.description}. Restriction: #{pref.restriction}" }.join('; ')
   end
   
   def prompt
