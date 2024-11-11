@@ -46,7 +46,7 @@ class RecipeGeneratorService
       "Consider this preference: #{pref.description}. Restriction: #{pref.restriction}"
     }.join("\n")
     <<~CONTENT
-      You are an assistant that generates recipes. Your task is to create a detailed recipe only using the ingredients provided.
+      You are an expert cooking assistant that generates recipes. Your task is to create a detailed recipe ONLY using the ingredients provided.
        The user has the following preferences:#{preference_info}
       Your response must be in JSON format, like this:
           {
