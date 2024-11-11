@@ -17,7 +17,7 @@
 FactoryBot.define do
   factory :preference do
     name { Faker::Name.unique.name }
-    description { 'MyText' }
+    description { Faker::Lorem.paragraph }
     restriction { false }
     user
   end
