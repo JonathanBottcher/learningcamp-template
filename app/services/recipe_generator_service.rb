@@ -70,7 +70,7 @@ class RecipeGeneratorService
     parsed_response = response.is_a?(String) ? JSON.parse(response) : response
     content = JSON.parse(parsed_response.dig('choices', 0, 'message', 'content'))
     # create recipe here
-    recipe = @user.recipes.build(name: content['name'], description: content['description'], ingredients: @message)
+    recipe = @user.recipes.create(name: content['name'], description: content['description'], ingredients: @message)
     recipe
   rescue JSON::ParserError => exception
     raise RecipeGeneratorServiceError, exception.message
