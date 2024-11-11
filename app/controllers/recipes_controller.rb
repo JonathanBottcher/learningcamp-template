@@ -17,8 +17,6 @@ class RecipesController < ApplicationController
 
     @recipe = RecipeGeneratorService.new(recipe_params[:ingredients], current_user.id, preferences).call
 
-    @recipe = current_user.recipes.build(recipe_params)
-
     if @recipe.save
       redirect_to recipes_path, notice: t('views.recipes.create_success')
     else
