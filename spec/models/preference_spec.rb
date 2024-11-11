@@ -38,9 +38,9 @@ describe Preference do
                                restriction: true)
       user.preferences.create!(name: 'Preference 3', description: 'Description 3',
                                restriction: true)
-      user.preferences.create!(name: 'Preference 3', description: 'Description 3',
+      user.preferences.create!(name: 'Preference 4', description: 'Description 3',
                                restriction: true)
-      user.preferences.create!(name: 'Preference 4', description: 'Description 4',
+      user.preferences.create!(name: 'Preference 5', description: 'Description 4',
                                restriction: true)
 
       extra_preference = user.preferences.build(name: 'Preference 6', description: 'Description 6', restriction: true)
