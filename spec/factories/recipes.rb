@@ -1,24 +1,24 @@
 # == Schema Information
 #
-# Table name: preferences
+# Table name: recipes
 #
 #  id          :bigint           not null, primary key
 #  user_id     :bigint           not null
-#  name        :string
-#  description :text
-#  restriction :boolean          default(TRUE), not null
+#  name        :string           not null
+#  description :text             not null
+#  ingredients :text             not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 # Indexes
 #
-#  index_preferences_on_user_id  (user_id)
+#  index_recipes_on_user_id  (user_id)
 #
 FactoryBot.define do
-  factory :preference do
+  factory :recipe do
     name { Faker::Name.unique.name }
     description { Faker::Lorem.paragraph }
-    restriction { false }
+    ingredients { Faker::Lorem.paragraph }
     user
   end
 end

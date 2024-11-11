@@ -14,22 +14,27 @@
 #
 #  index_preferences_on_user_id  (user_id)
 #
-require 'rails_helper'
 
-RSpec.describe Preference, type: :model do
-  subject {
-    Preference.new(
-      name: "test",
-      description: "test",
-      restriction: false
-    )
-  }
-  it 'is valid with a name' do
-    expect(subject).to be_valid
-  end
+describe Preference do
+  describe 'validations' do
+    subject { build(:preference) }
 
-  it 'is invalid without a name' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+    let(:user) { create(:user) }
+
+    it 'is valid with a name, description and restriction' do
+      expect(subject).to be_valid
+    end
+    
+    # Validate presence
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:restriction) }
+
+    # Test for max preferences
+    it 'is invalid if number of preferences is exceeded' do
+      create_list(:preference, 5, user: user)
+      extra_preference = user.preferences.build(name: 'Preference 6', description: 'Description 6', restriction: true)
+      expect(extra_preference).not_to be_valid
+    end
   end
 end

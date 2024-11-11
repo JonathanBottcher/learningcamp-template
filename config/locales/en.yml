@@ -131,6 +131,7 @@ en:
       - Name
       - Ingredients
       create_recipe: Create Recipe
+      create_success: Recipe created successfully
       description: Here you will find all your recipes
       ingredients: Ingredients
       name: Name
