@@ -42,7 +42,12 @@ class RecipeGeneratorService
 
   def prompt
     <<~CONTENT
-      Prompt goes here
+      You are an assistant that generates recipes. Your task is to create a detailed recipe in JSON format only using the ingredients provided.
+        Your response must be in JSON format, like this:
+          {
+          "name": "Recipe Name",
+          "description": "Preparation instructions"
+        }
     CONTENT
   end
 
@@ -60,6 +65,7 @@ class RecipeGeneratorService
     parsed_response = response.is_a?(String) ? JSON.parse(response) : response
     content = JSON.parse(parsed_response.dig('choices', 0, 'message', 'content'))
     # create recipe here
+    recipe = @user.recipes.build(name: content['name'], description: content['description'], ingredients: @message)
   rescue JSON::ParserError => exception
     raise RecipeGeneratorServiceError, exception.message
   end
