@@ -40,11 +40,12 @@ class RecipeGeneratorService
   def system_message
     [{ role: 'system', content: prompt }]
   end
-
+  
+  def preference_info
+    @preferences.map { |pref| "Consider this preference: #{pref.description}. Restriction: #{pref.restriction}" }
+  end
+  
   def prompt
-    preference_info = @preferences.map { |pref|
-      "Consider this preference: #{pref.description}. Restriction: #{pref.restriction}"
-    }.join("\n")
     <<~CONTENT
       You are an expert cooking assistant that generates recipes. Your task is to create a detailed recipe ONLY using the ingredients provided.
        The user has the following preferences:#{preference_info}
