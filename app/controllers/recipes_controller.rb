@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show]
+  before_action :set_recipe, only: %i[show destroy]
   def index
     @recipes = Recipe.all
   end
@@ -21,6 +21,14 @@ class RecipesController < ApplicationController
       redirect_to recipes_path, notice: t('views.recipes.create_success')
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @recipe.destroy
+      redirect_to recipes_path, notice: t('views.recipes.destroy_success')
+    else
+      redirect_to recipes_path, alert: t('views.recipes.destroy_failure')
     end
   end
 
