@@ -4,7 +4,7 @@ class CreatePreferences < ActiveRecord::Migration[7.1]
       t.references :user, foreign_key: true, null: false
       t.string :name, null: false
       t.text :description, null: false
-      t.boolean :restriction, null: false, default: false
+      t.boolean :restriction, default: false
 
       t.timestamps
     end
